@@ -1,0 +1,146 @@
+* Keywords of SQL are made case insensitive
+
+* command should end with semicolon - else it will display error
+
+* defining primary key is compulsory, during create table - if not defined will display error
+
+* We are creating Different Files for different tables
+
+* How SCHEMA FILE looks: 
+      *Students*
+      <<
+      pk: id
+      id int
+      name varchar 30
+      dob date
+      percent decimal 4 2
+      >>
+
+How the data file(table) of Students.txt will look like -
+    <100,SY,24-02-2001,66.3>
+    <103,SS,24-02-2001,92.4>
+    <104,IJ,24-02-2001,76.8>
+
+
+
+
+
+
+Schema File :
+
+    *Student*
+    <<
+    pk: roll
+    id int
+    name varchar 20
+    percent decimal 4 2
+    >>
+
+    *Teacher*
+    <<
+    id int
+    name varchar 30
+    >>
+
+
+* Commands  :
+
+    1. CREATE TABLE:
+
+        create table Teacher(id int,name varchar(30),addr varchar(50),phno int,primary key(name));
+        create table Students(roll int check(roll > 0), name varchar(20) check(name!="ABC"), dob date, percent decimal(4,2), primary key(roll));
+        create table Peons(id int,sal int check(sal>5000 AND sal<20000), name varchar(30) check(name!=""), primary key(id));
+
+        create table Stud1(id int, primary key(id));
+        create table Stud2(id int, primary key(id));
+        
+
+    2. DROP TABLE :
+
+        drop table Students;
+
+    3. DESCRIBE TABLE :
+
+        describe 
+
+    3. INSERT INTO :
+
+        insert into Students values(100,"Saurabh Yelmame",24-02-2001,88);
+        insert into Students values(101,"Dipak Yadav",20-01-2001,99);
+        insert into Students values(102,"Prathamesh Wavhal",02-07-2001,100);
+        insert into Students values(103,"Shabbir Asgar",28-07-2001,97);
+        insert into Students values(104,"Vaishnav Sonawane",12-08-2001,69);
+        insert into Students values(105,"Raj Shah",11-03-2001,77);
+        insert into Students values(106,"Badshah Bhai",06-03-2001,93);
+        insert into Students values(107,"Sallu Bhai",22-09-2001,35);
+
+
+
+    4. HELP :
+
+        help tables;
+        help create;
+
+    5. SELECT
+
+        select * from Students;
+        select name,id from Students; //size=5
+        
+        select name,id from Students where id>103;
+        select id,name from Students where marks>50 and marks<70;
+        select name,roll from Students where percent>96; 
+
+        select * from Students where percent > 88;
+
+        Commands for testing : 
+            VALID commands :
+                1. create table Students(id int,name varchar(30),dob date, percent decimal(4,2),primary key(id));
+                2.insert into Students values(100,"SY",24-02-2001,66.3);
+                  insert into Students values(101,"KK",24-02-2001,33.9);
+                  insert into Students values(102,"RJ",24-02-2001,88.2);
+                  insert into Students values(103,"SS",24-02-2001,92.4);
+                  insert into Students values(108,"KK",24-02-2001,33.9);
+                  insert into Students values(104,"IJ",24-02-2001,76.8);
+                  insert into Students values(105,"AK",24-02-2001,57.4);
+                  
+                  insert into Students values(111,"KK",24-02-2001,33.9);
+                3.select * from Students;
+                  select name,id from students where id!=103;
+                4.help create;
+                5.describe hell;
+
+                6. delete from Students where id=104;
+
+                7. update Students set percent=100,name="zz";
+
+*******************************************************************************************
+                
+                Employee table
+
+decimal(7,2) : 60000.00
+1. create table Employee(empId int,name varchar(30),dob date,salary decimal(7,2),primary key(empId));
+2. create table Students(roll int check(roll > 0), name varchar(20) check(name!="ABC"), dob date, percent decimal(4,2), primary key(roll)); 
+
+drop table Employee;
+
+3. insert into Employee values(100,"SY",24-02-2001,50000.00);
+   insert into Employee values(101,"KS",21-01-2001,80000.00);
+   insert into Employee values(102,"AM",25-05-2000,57000.70);
+   insert into Employee values(103,"NS",28-09-2004,69000.00);
+   insert into Employee values(104,"RS",24-02-2001,77000.90);
+   insert into Employee values(100,"RS",21-12-1999,50500.00);
+
+4. select * from Employee;
+5. select * from Employee where salary>70000;
+6. select name,salary from Employee where salary>60000;
+
+7. update Employee set salary=50000 where empId=102;
+        SHOW the rows affected...
+
+
+8. delete from Employee where empId=118;
+
+
+9. help create table;
+10.describe Employee; 
+11. quit;
